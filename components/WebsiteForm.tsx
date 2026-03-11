@@ -42,6 +42,202 @@ export function WebsiteForm() {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
 
+  function pick<T,>(items: T[]) {
+    return items[Math.floor(Math.random() * items.length)];
+  }
+
+  function randomPhone() {
+    const a = Math.floor(200 + Math.random() * 700);
+    const b = Math.floor(200 + Math.random() * 700);
+    const c = Math.floor(1000 + Math.random() * 9000);
+    return `(${a}) ${b}-${c}`;
+  }
+
+  function randomHours() {
+    const patterns = [
+      "Mon–Fri: 8am–6pm\nSat: 9am–2pm\nSun: Closed",
+      "Mon–Thu: 9am–5pm\nFri: 9am–4pm\nSat: 10am–2pm\nSun: Closed",
+      "Mon–Sat: 10am–7pm\nSun: 11am–4pm",
+      "Mon–Fri: 7am–3pm\nSat–Sun: Closed",
+    ];
+    return pick(patterns);
+  }
+
+  function fillRandom() {
+    setError(null);
+    setSuccess(null);
+
+    const templates = [
+      {
+        businessName: () =>
+          `${pick(["Evergreen", "Sunrise", "Bluebird", "Maple", "Cedar", "Harbor", "Bright"])} ${pick(["Plumbing", "Dental", "Fitness", "Bakery", "Landscaping", "Auto Repair", "Cleaning", "Pet Grooming"])}${pick([" Co.", " Studio", " & Co.", ""])}`
+            .replace(/\s+/g, " ")
+            .trim(),
+        tagline: () =>
+          pick([
+            "Fast, friendly, local service.",
+            "Quality work at honest prices.",
+            "Modern care for busy families.",
+            "Made fresh every morning.",
+            "Your neighborhood experts.",
+          ]),
+        heroTitle: (name: string) =>
+          pick([
+            `Welcome to ${name}`,
+            "Service you can trust",
+            "Small business. Big standards.",
+            "Comfort, quality, and care",
+          ]),
+        heroDescription: () =>
+          pick([
+            "We make it easy to get the help you need—clear pricing, friendly staff, and great results.",
+            "Book in minutes and get a quick quote. We focus on quality, speed, and a great customer experience.",
+            "Professional service with a personal touch. Serving the community with pride.",
+          ]),
+        about: (name: string) =>
+          pick([
+            `${name} is a locally owned team focused on reliable service and great communication. We show up on time, do the job right, and keep things simple from start to finish.`,
+            `We built ${name} to be the kind of business we’d want to use: friendly people, straightforward pricing, and consistent quality. Our goal is to earn your trust for the long haul.`,
+          ]),
+        services: (category: string) => {
+          const byCategory: Record<string, string[]> = {
+            Plumbing: [
+              "Leak detection & repair",
+              "Water heater install & repair",
+              "Drain cleaning",
+              "Fixture replacement",
+            ],
+            Dental: [
+              "Cleanings & checkups",
+              "Whitening",
+              "Fillings & crowns",
+              "Emergency appointments",
+            ],
+            Fitness: [
+              "Personal training",
+              "Group classes",
+              "Strength programming",
+              "Nutrition coaching",
+            ],
+            Bakery: [
+              "Fresh bread daily",
+              "Custom cakes",
+              "Pastries & coffee",
+              "Catering boxes",
+            ],
+            Landscaping: [
+              "Lawn maintenance",
+              "Seasonal cleanups",
+              "Mulch & edging",
+              "Irrigation checks",
+            ],
+            "Auto Repair": [
+              "Oil changes",
+              "Brake service",
+              "Diagnostics",
+              "Tire rotation",
+            ],
+            Cleaning: [
+              "Standard home cleaning",
+              "Deep cleans",
+              "Move-in / move-out",
+              "Office cleaning",
+            ],
+            "Pet Grooming": [
+              "Bath & brush",
+              "Haircut & styling",
+              "Nail trim",
+              "De-shedding",
+            ],
+          };
+          const list = byCategory[category] || [
+            "Consultations",
+            "Packages",
+            "Maintenance",
+            "Emergency support",
+          ];
+          return list.join("\n");
+        },
+        contact: () =>
+          pick([
+            "Call or email us for a quick quote. Same-week appointments are often available.",
+            "Have a question? Reach out and we’ll respond within 1 business day.",
+            "Tell us what you need and we’ll recommend the best option for your budget and timeline.",
+          ]),
+        address: () =>
+          `${pick(["123", "245", "18", "77", "560"])} ${pick(["Main", "Oak", "Pine", "Market", "Cedar", "Sunset"])} St, ${pick(["San Diego", "Austin", "Seattle", "Denver", "Miami", "Portland"])}, ${pick(["CA", "TX", "WA", "CO", "FL", "OR"])}`,
+      },
+      {
+        businessName: () =>
+          `${pick(["Northside", "Downtown", "Coastal", "Lakeside", "Uptown"])} ${pick(["Wellness", "Barbershop", "Yoga", "Cafe", "Studio", "Spa"])}${pick(["", " Collective", " House"])}`.trim(),
+        tagline: () =>
+          pick([
+            "A better routine starts here.",
+            "Simple, calm, and consistent.",
+            "Walk in. Feel better. Repeat.",
+            "Good vibes, great service.",
+          ]),
+        heroTitle: (name: string) =>
+          pick([
+            `Make time for ${name.split(" ")[0]}`,
+            "Your new favorite place",
+            "Feel-good service, done right",
+          ]),
+        heroDescription: () =>
+          pick([
+            "Clean space, friendly staff, and flexible scheduling—built for real life.",
+            "Book a spot, show up, and let us handle the rest.",
+          ]),
+        about: (name: string) =>
+          pick([
+            `${name} is designed to be welcoming, easy to book, and easy to love. We keep things simple and focus on doing the basics exceptionally well.`,
+            `We’re a local team that cares about the details—service, cleanliness, and consistency. That’s what brings people back to ${name}.`,
+          ]),
+        services: () =>
+          pick([
+            "Appointments\nMemberships\nPackages\nGift cards",
+            "Walk-ins\nAppointments\nPackages\nAdd-ons",
+          ]),
+        contact: () =>
+          pick([
+            "Text us to book, or call during business hours. We’re happy to help.",
+            "Email us with any questions—quotes and scheduling are quick and easy.",
+          ]),
+        address: () =>
+          `${pick(["44", "90", "310", "12"])} ${pick(["Broadway", "1st Ave", "2nd Ave", "Center"])} , ${pick(["Los Angeles", "Phoenix", "Nashville", "Chicago"])}, ${pick(["CA", "AZ", "TN", "IL"])}`.replace(
+            /\s+/g,
+            " ",
+          ),
+      },
+    ];
+
+    const t = pick(templates);
+    const businessName = t.businessName();
+    const categoryMatch = businessName.match(
+      /(Plumbing|Dental|Fitness|Bakery|Landscaping|Auto Repair|Cleaning|Pet Grooming)/,
+    );
+    const category = categoryMatch?.[1] || "Service";
+
+    const emailDomain = businessName
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "")
+      .slice(0, 24);
+
+    setForm({
+      businessName,
+      tagline: t.tagline(),
+      heroTitle: t.heroTitle(businessName),
+      heroDescription: t.heroDescription(),
+      about: t.about(businessName),
+      services: t.services(category),
+      contact: t.contact(),
+      operatingHours: randomHours(),
+      address: t.address(),
+      phone: randomPhone(),
+      email: `hello@${emailDomain || "business"}.test`,
+    });
+  }
+
   const canSubmit = useMemo(() => {
     return form.businessName.trim().length > 0 && !submitting;
   }, [form.businessName, submitting]);
@@ -120,13 +316,22 @@ export function WebsiteForm() {
               demo website.
             </p>
           </div>
-          <button
-            type="submit"
-            disabled={!canSubmit}
-            className="mt-3 inline-flex items-center justify-center rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-60 sm:mt-0"
-          >
-            {submitting ? "Creating…" : "Create website"}
-          </button>
+          <div className="mt-3 flex flex-col gap-2 sm:mt-0 sm:flex-row sm:items-center">
+            <button
+              type="button"
+              onClick={fillRandom}
+              className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-zinc-900 ring-1 ring-inset ring-zinc-200 hover:bg-zinc-50"
+            >
+              Fill random demo data
+            </button>
+            <button
+              type="submit"
+              disabled={!canSubmit}
+              className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {submitting ? "Creating…" : "Create website"}
+            </button>
+          </div>
         </div>
 
         {error ? (

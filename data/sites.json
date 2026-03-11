@@ -1,5 +1,33 @@
 [
   {
+    "id": "d92420db-53c0-4a95-ade4-6be7faedce0b",
+    "slug": "cedar-pet-grooming-studio",
+    "businessName": "Cedar Pet Grooming Studio",
+    "tagline": "Modern care for busy families.",
+    "heroTitle": "Small business. Big standards.",
+    "heroDescription": "Professional service with a personal touch. Serving the community with pride.",
+    "about": "We built Cedar Pet Grooming Studio to be the kind of business we’d want to use: friendly people, straightforward pricing, and consistent quality. Our goal is to earn your trust for the long haul.",
+    "services": [
+      "Bath & brush",
+      "Haircut & styling",
+      "Nail trim",
+      "De-shedding"
+    ],
+    "contact": "Tell us what you need and we’ll recommend the best option for your budget and timeline.",
+    "operatingHours": "Mon–Sat: 10am–7pm\r\nSun: 11am–4pm",
+    "address": "245 Pine St, Austin, CO",
+    "phone": "(566) 216-2159",
+    "email": "hello@cedarpetgroomingstudio.test",
+    "logoUrl": "/uploads/cedar-pet-grooming-studio-logo-1773217034799-fd1c2629745458.png",
+    "bannerUrl": "/uploads/cedar-pet-grooming-studio-banner-1773217034802-2a05a05595602.png",
+    "galleryUrls": [
+      "/uploads/cedar-pet-grooming-studio-gallery-1773217034828-632a7d6867212.webp",
+      "/uploads/cedar-pet-grooming-studio-gallery-1773217034830-5eea3a2f8b8738.webp",
+      "/uploads/cedar-pet-grooming-studio-gallery-1773217034834-cf84a1e489f0a8.webp"
+    ],
+    "createdAt": "2026-03-11T08:17:14.836Z"
+  },
+  {
     "id": "seed-1",
     "slug": "sparkle-auto-detailing",
     "businessName": "Sparkle Auto Detailing",
@@ -24,4 +52,3 @@
     "createdAt": "2026-03-11T00:00:00.000Z"
   }
 ]
-
