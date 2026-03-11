@@ -7,9 +7,9 @@ export const dynamic = "force-dynamic";
 export default async function SiteBySlugPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  const { slug } = await params;
   const site = await getSiteBySlug(slug);
 
   if (!site) {
