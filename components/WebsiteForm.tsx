@@ -32,9 +32,14 @@ const INITIAL: FormState = {
   email: "",
 };
 
-export function WebsiteForm() {
+export function WebsiteForm(props: {
+  mode?: "create" | "edit";
+  siteId?: string;
+  initial?: Partial<FormState>;
+}) {
   const router = useRouter();
-  const [form, setForm] = useState<FormState>(INITIAL);
+  const mode = props.mode ?? "create";
+  const [form, setForm] = useState<FormState>({ ...INITIAL, ...props.initial });
   const [logo, setLogo] = useState<File | null>(null);
   const [banner, setBanner] = useState<File | null>(null);
   const [gallery, setGallery] = useState<File[] | null>(null);
@@ -249,19 +254,25 @@ export function WebsiteForm() {
     setSubmitting(true);
 
     try {
+      if (mode === "edit" && !props.siteId) {
+        throw new Error("Missing site id");
+      }
+
       const fd = new FormData();
       for (const [k, v] of Object.entries(form)) fd.append(k, v);
       if (logo) fd.append("logo", logo);
       if (banner) fd.append("banner", banner);
       for (const f of gallery || []) fd.append("gallery", f);
 
-      const res = await fetch("/api/sites", { method: "POST", body: fd });
+      const url = mode === "edit" ? `/api/sites/${props.siteId}` : "/api/sites";
+      const method = mode === "edit" ? "PUT" : "POST";
+      const res = await fetch(url, { method, body: fd });
       const data = await res.json();
       if (!res.ok || !data?.ok) {
         throw new Error(data?.error || "Failed to create site");
       }
 
-      setSuccess("Website created. Redirecting…");
+      setSuccess(mode === "edit" ? "Website updated. Redirecting…" : "Website created. Redirecting…");
       router.push("/sites");
       router.refresh();
     } catch (err) {
@@ -309,27 +320,30 @@ export function WebsiteForm() {
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900">
-              Create a website
+              {mode === "edit" ? "Edit website" : "Create a website"}
             </h1>
             <p className="mt-1 text-sm text-zinc-600">
-              Fill in the business details, upload a couple images, and generate a
-              demo website.
+              {mode === "edit"
+                ? "Update the business details and regenerate the demo preview."
+                : "Fill in the business details, upload a couple images, and generate a demo website."}
             </p>
           </div>
           <div className="mt-3 flex flex-col gap-2 sm:mt-0 sm:flex-row sm:items-center">
-            <button
-              type="button"
-              onClick={fillRandom}
-              className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-zinc-900 ring-1 ring-inset ring-zinc-200 hover:bg-zinc-50"
-            >
-              Fill random demo data
-            </button>
+            {mode === "create" ? (
+              <button
+                type="button"
+                onClick={fillRandom}
+                className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-zinc-900 ring-1 ring-inset ring-zinc-200 hover:bg-zinc-50"
+              >
+                Fill random demo data
+              </button>
+            ) : null}
             <button
               type="submit"
               disabled={!canSubmit}
               className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {submitting ? "Creating…" : "Create website"}
+              {submitting ? (mode === "edit" ? "Saving…" : "Creating…") : mode === "edit" ? "Save changes" : "Create website"}
             </button>
           </div>
         </div>

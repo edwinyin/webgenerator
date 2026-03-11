@@ -1,54 +1,78 @@
 [
   {
-    "id": "d92420db-53c0-4a95-ade4-6be7faedce0b",
-    "slug": "cedar-pet-grooming-studio",
-    "businessName": "Cedar Pet Grooming Studio",
-    "tagline": "Modern care for busy families.",
-    "heroTitle": "Small business. Big standards.",
-    "heroDescription": "Professional service with a personal touch. Serving the community with pride.",
-    "about": "We built Cedar Pet Grooming Studio to be the kind of business we’d want to use: friendly people, straightforward pricing, and consistent quality. Our goal is to earn your trust for the long haul.",
+    "id": "ed3f988d-b831-4674-ba4f-b55ff372d1a6",
+    "slug": "bright-bakery-co",
+    "businessName": "Bright Bakery Co.",
+    "tagline": "Quality work at honest prices.",
+    "heroTitle": "Service you can trust",
+    "heroDescription": "We make it easy to get the help you need—clear pricing, friendly staff, and great results.",
+    "about": "Bright Bakery Co. is a locally owned team focused on reliable service and great communication. We show up on time, do the job right, and keep things simple from start to finish.",
+    "services": [
+      "Fresh bread daily",
+      "Custom cakes",
+      "Pastries & coffee",
+      "Catering boxes"
+    ],
+    "contact": "Call or email us for a quick quote. Same-week appointments are often available.",
+    "operatingHours": "Mon–Thu: 9am–5pm\r\nFri: 9am–4pm\r\nSat: 10am–2pm\r\nSun: Closed",
+    "address": "123 Market St, Denver, CO",
+    "phone": "(511) 658-5547",
+    "email": "hello@brightbakeryco.test",
+    "logoUrl": "",
+    "bannerUrl": "",
+    "galleryUrls": [],
+    "createdAt": "2026-03-11T08:40:34.072Z"
+  },
+  {
+    "id": "c38397e9-4b75-45ec-bc46-9c01e371d436",
+    "slug": "sunrise-pet-grooming-studio",
+    "businessName": "Sunrise Pet Grooming Studio",
+    "tagline": "Your neighborhood experts.",
+    "heroTitle": "Service you can trust",
+    "heroDescription": "Book in minutes and get a quick quote. We focus on quality, speed, and a great customer experience.",
+    "about": "Sunrise Pet Grooming Studio is a locally owned team focused on reliable service and great communication. We show up on time, do the job right, and keep things simple from start to finish.",
     "services": [
       "Bath & brush",
       "Haircut & styling",
       "Nail trim",
       "De-shedding"
     ],
-    "contact": "Tell us what you need and we’ll recommend the best option for your budget and timeline.",
+    "contact": "Call or email us for a quick quote. Same-week appointments are often available.",
     "operatingHours": "Mon–Sat: 10am–7pm\r\nSun: 11am–4pm",
-    "address": "245 Pine St, Austin, CO",
-    "phone": "(566) 216-2159",
-    "email": "hello@cedarpetgroomingstudio.test",
-    "logoUrl": "/uploads/cedar-pet-grooming-studio-logo-1773217034799-fd1c2629745458.png",
-    "bannerUrl": "/uploads/cedar-pet-grooming-studio-banner-1773217034802-2a05a05595602.png",
-    "galleryUrls": [
-      "/uploads/cedar-pet-grooming-studio-gallery-1773217034828-632a7d6867212.webp",
-      "/uploads/cedar-pet-grooming-studio-gallery-1773217034830-5eea3a2f8b8738.webp",
-      "/uploads/cedar-pet-grooming-studio-gallery-1773217034834-cf84a1e489f0a8.webp"
-    ],
-    "createdAt": "2026-03-11T08:17:14.836Z"
+    "address": "18 Sunset St, San Diego, OR",
+    "phone": "(756) 715-7745",
+    "email": "hello@sunrisepetgroomingstudio.test",
+    "logoUrl": "",
+    "bannerUrl": "",
+    "galleryUrls": [],
+    "createdAt": "2026-03-11T08:40:29.654Z"
   },
   {
-    "id": "seed-1",
-    "slug": "sparkle-auto-detailing",
-    "businessName": "Sparkle Auto Detailing",
-    "tagline": "Showroom shine, every time.",
-    "heroTitle": "Premium detailing for busy people",
-    "heroDescription": "Mobile and in-shop detailing packages designed to make your car look incredible—without the hassle.",
-    "about": "We’re a small, local team obsessed with the little things: clean lines, spotless interiors, and a finish that lasts. We use pro-grade products and a repeatable process so you know what you’ll get every time.",
+    "id": "afc19154-abc1-4d1c-b0d2-749eb0599d77",
+    "slug": "kasi-setel-auto-repair-service",
+    "businessName": "Kasi Setel Auto Repair Service",
+    "tagline": "Modern care for busy families.",
+    "heroTitle": "Service you can trust",
+    "heroDescription": "We make it easy to get the help you need—clear pricing, friendly staff, and great results.",
+    "about": "We built Kasi Setel Auto Repair to be the kind of business we’d want to use: friendly people, straightforward pricing, and consistent quality. Our goal is to earn your trust for the long haul.",
     "services": [
-      "Exterior wash + wax",
-      "Interior deep clean",
-      "Ceramic coating",
-      "Headlight restoration"
+      "Oil changes",
+      "Brake service",
+      "Diagnostics",
+      "Tire rotation"
     ],
-    "contact": "Call or text us for a quick quote. Same-week appointments available for most packages.",
-    "operatingHours": "Mon–Sat: 9am–6pm\nSun: Closed",
-    "address": "123 Main St, San Diego, CA",
-    "phone": "(555) 123-4567",
-    "email": "hello@sparkleautodetailing.test",
-    "logoUrl": "/uploads/seed-logo.svg",
-    "bannerUrl": "/uploads/seed-banner.svg",
-    "galleryUrls": [],
-    "createdAt": "2026-03-11T00:00:00.000Z"
+    "contact": "Call or email us for a quick quote. Same-week appointments are often available.",
+    "operatingHours": "Mon–Fri: 8am–6pm\r\nSat: 9am–2pm\r\nSun: Closed",
+    "address": "123 Oak St, Miami, CO",
+    "phone": "(642) 249-9181",
+    "email": "hello@mapleautorepair.test",
+    "logoUrl": "/uploads/kasi-setel-auto-repair-logo-1773218231801-59dc3f9bb2974.jpeg",
+    "bannerUrl": "/uploads/kasi-setel-auto-repair-banner-1773218231805-1e4f57f608b4e8.png",
+    "galleryUrls": [
+      "/uploads/kasi-setel-auto-repair-gallery-1773218231817-73ef5868f8279.jpg",
+      "/uploads/kasi-setel-auto-repair-gallery-1773218231819-de8c8f66596c68.png",
+      "/uploads/kasi-setel-auto-repair-gallery-1773218231843-78af97ab982c4.jpg"
+    ],
+    "createdAt": "2026-03-11T08:37:11.846Z"
   }
 ]

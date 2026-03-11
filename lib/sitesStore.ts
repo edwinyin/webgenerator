@@ -62,6 +62,11 @@ export async function getSiteBySlug(slug: string) {
   return sites.find((s) => s.slug === slug) ?? null;
 }
 
+export async function getSiteById(id: string) {
+  const sites = await readAllSites();
+  return sites.find((s) => s.id === id) ?? null;
+}
+
 export async function getAllSites() {
   return await readAllSites();
 }
@@ -81,5 +86,32 @@ export async function getUniqueSlug(baseSlug: string) {
   let i = 2;
   while (existing.has(`${baseSlug}-${i}`)) i += 1;
   return `${baseSlug}-${i}`;
+}
+
+export async function getUniqueSlugForUpdate(baseSlug: string, ignoreId: string) {
+  const sites = await readAllSites();
+  const existing = new Set(sites.filter((s) => s.id !== ignoreId).map((s) => s.slug));
+  if (!existing.has(baseSlug)) return baseSlug;
+
+  let i = 2;
+  while (existing.has(`${baseSlug}-${i}`)) i += 1;
+  return `${baseSlug}-${i}`;
+}
+
+export async function updateSiteById(id: string, next: WebsiteRecord) {
+  const sites = await readAllSites();
+  const idx = sites.findIndex((s) => s.id === id);
+  if (idx === -1) return null;
+  sites[idx] = next;
+  await writeAllSites(sites);
+  return next;
+}
+
+export async function deleteSiteById(id: string) {
+  const sites = await readAllSites();
+  const next = sites.filter((s) => s.id !== id);
+  if (next.length === sites.length) return false;
+  await writeAllSites(next);
+  return true;
 }
 
