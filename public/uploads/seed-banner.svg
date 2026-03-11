@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="700" viewBox="0 0 1600 700" fill="none">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1600" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0EA5E9"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="h" x1="0" y1="0" x2="0" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="rgba(255,255,255,0.18)"/>
+      <stop offset="1" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="700" fill="url(#g)"/>
+  <path d="M0 470C220 370 420 520 640 420C860 320 1040 420 1250 350C1420 293 1520 270 1600 290V700H0V470Z" fill="url(#h)"/>
+  <circle cx="1350" cy="150" r="90" fill="rgba(255,255,255,0.12)"/>
+  <circle cx="1450" cy="220" r="40" fill="rgba(255,255,255,0.10)"/>
+  <text x="90" y="170" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="60" font-weight="800" fill="rgba(255,255,255,0.95)">Premium car detailing</text>
+  <text x="90" y="240" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="28" font-weight="500" fill="rgba(255,255,255,0.82)">Mobile + in-shop packages " Fast quotes " Same-week appointments</text>
+</svg>
+

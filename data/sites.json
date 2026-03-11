@@ -1,0 +1,27 @@
+[
+  {
+    "id": "seed-1",
+    "slug": "sparkle-auto-detailing",
+    "businessName": "Sparkle Auto Detailing",
+    "tagline": "Showroom shine, every time.",
+    "heroTitle": "Premium detailing for busy people",
+    "heroDescription": "Mobile and in-shop detailing packages designed to make your car look incredible—without the hassle.",
+    "about": "We’re a small, local team obsessed with the little things: clean lines, spotless interiors, and a finish that lasts. We use pro-grade products and a repeatable process so you know what you’ll get every time.",
+    "services": [
+      "Exterior wash + wax",
+      "Interior deep clean",
+      "Ceramic coating",
+      "Headlight restoration"
+    ],
+    "contact": "Call or text us for a quick quote. Same-week appointments available for most packages.",
+    "operatingHours": "Mon–Sat: 9am–6pm\nSun: Closed",
+    "address": "123 Main St, San Diego, CA",
+    "phone": "(555) 123-4567",
+    "email": "hello@sparkleautodetailing.test",
+    "logoUrl": "/uploads/seed-logo.svg",
+    "bannerUrl": "/uploads/seed-banner.svg",
+    "galleryUrls": [],
+    "createdAt": "2026-03-11T00:00:00.000Z"
+  }
+]
+

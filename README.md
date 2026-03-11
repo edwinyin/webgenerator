@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Website Builder MVP (Next.js App Router)
+
+A tiny demo “website builder” that generates simple small-business websites.
+
+- **No auth**
+- **No database**
+- **Local JSON storage**: `data/sites.json`
+- **Local uploads**: `public/uploads`
+- **Generated site preview**: single route `/site/[slug]` with front-end tabs (no internal routing)
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the dev server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Routes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `/` → home page with links
+- `/admin/create` → create a website (form + uploads)
+- `/sites` → list all created websites
+- `/site/[slug]` → generated website preview (tabs: Home/About/Services/Contact/Hours)
 
-## Learn More
+## Data + uploads
 
-To learn more about Next.js, take a look at the following resources:
+- **Sites JSON**: `data/sites.json`
+  - If it doesn’t exist, it will be created automatically the first time the app reads it.
+  - It ships with a small seed record you can delete if you want an empty state.
+- **Uploads**: files are written to `public/uploads` via `POST /api/sites` (multipart form data).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Build / run production
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run build
+npm run start
+```
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
