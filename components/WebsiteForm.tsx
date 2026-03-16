@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { ImageUploadField } from "@/components/ImageUploadField";
 
@@ -46,6 +46,17 @@ export function WebsiteForm(props: {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
+  const [devMode, setDevMode] = useState(false);
+
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.shiftKey && e.altKey && e.code === "KeyD") {
+        setDevMode((v) => !v);
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   function pick<T,>(items: T[]) {
     return items[Math.floor(Math.random() * items.length)];
@@ -326,7 +337,7 @@ export function WebsiteForm(props: {
             </p>
           </div>
           <div className="mt-3 flex flex-col gap-2 sm:mt-0 sm:flex-row sm:items-center">
-            {mode === "create" ? (
+            {mode === "create" && devMode ? (
               <button
                 type="button"
                 onClick={fillRandom}
