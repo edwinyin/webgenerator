@@ -13,33 +13,33 @@ export default async function SitesPage() {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h1 className="text-2xl font-extrabold tracking-tight text-white">
-              Created websites
+              Laman web yang dicipta
             </h1>
             <p className="mt-1 text-sm text-white/80">
-              Open any card to preview the single-route generated website.
+              Buka mana-mana kad untuk pratonton laman web yang dijana.
             </p>
           </div>
           <Link
             href="/admin/create"
             className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-zinc-900 hover:bg-zinc-100"
           >
-            Create new
+            Cipta baharu
           </Link>
         </div>
       </div>
 
       {sites.length === 0 ? (
         <div className="mt-8 rounded-3xl border border-zinc-200 bg-white p-8 text-center shadow-sm">
-          <p className="text-lg font-bold text-zinc-900">No websites yet</p>
+          <p className="text-lg font-bold text-zinc-900">Tiada laman web lagi</p>
           <p className="mt-2 text-sm text-zinc-600">
-            Create your first demo website to see it appear here.
+            Cipta laman web demo pertama anda untuk melihatnya di sini.
           </p>
           <div className="mt-6">
             <Link
               href="/admin/create"
               className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-6 py-3 text-sm font-semibold text-white hover:bg-zinc-800"
             >
-              Create a website
+              Cipta laman web
             </Link>
           </div>
         </div>

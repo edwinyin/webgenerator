@@ -5,11 +5,11 @@ import { WebsiteRecord } from "@/lib/types";
 import { SectionTabs } from "@/components/SectionTabs";
 
 const TABS = [
-  { id: "home", label: "Home" },
-  { id: "about", label: "About Us" },
-  { id: "services", label: "Services" },
-  { id: "contact", label: "Contact Us" },
-  { id: "hours", label: "Operating Hours" },
+  { id: "home", label: "Utama" },
+  { id: "about", label: "Tentang Kami" },
+  { id: "services", label: "Perkhidmatan" },
+  { id: "contact", label: "Hubungi Kami" },
+  { id: "hours", label: "Waktu Operasi" },
 ];
 
 export function SitePreview({ site }: { site: WebsiteRecord }) {
@@ -18,19 +18,19 @@ export function SitePreview({ site }: { site: WebsiteRecord }) {
   const heroTitle = site.heroTitle || `Welcome to ${site.businessName}`;
   const heroDescription =
     site.heroDescription ||
-    "A simple, modern small-business website generated from your form inputs.";
+    "Laman web perniagaan kecil yang moden, dijana daripada input borang anda.";
 
-  const about = site.about || "Tell customers what makes your business great.";
+  const about = site.about || "Ceritakan kepada pelanggan apa yang menjadikan perniagaan anda istimewa.";
 
   const services = useMemo(() => {
     const list = site.services?.filter(Boolean) ?? [];
-    return list.length ? list : ["Add your services in the builder form."];
+    return list.length ? list : ["Tambahkan perkhidmatan anda dalam borang pembina."];
   }, [site.services]);
 
   const contactBlocks = [
-    { label: "Address", value: site.address },
-    { label: "Phone", value: site.phone },
-    { label: "Email", value: site.email },
+    { label: "Alamat", value: site.address },
+    { label: "Telefon", value: site.phone },
+    { label: "E-mel", value: site.email },
   ].filter((b) => (b.value || "").trim().length);
 
   return (
@@ -62,7 +62,7 @@ export function SitePreview({ site }: { site: WebsiteRecord }) {
             href="#contact"
             className="hidden rounded-full bg-zinc-900 px-4 py-2 text-sm font-semibold text-white hover:bg-zinc-800 sm:inline-flex"
           >
-            Contact Us
+            Hubungi Kami
           </a>
         </div>
       </header>
@@ -86,7 +86,7 @@ export function SitePreview({ site }: { site: WebsiteRecord }) {
           <div className="mx-auto -mt-28 max-w-6xl px-4 sm:-mt-32 sm:px-6">
             <div className="rounded-3xl border border-zinc-200 bg-white/95 p-6 shadow-sm backdrop-blur sm:p-10">
               <p className="text-sm font-semibold text-sky-700">
-                Small business website
+                Laman web perniagaan kecil
               </p>
               <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-5xl">
                 {heroTitle}
@@ -100,13 +100,13 @@ export function SitePreview({ site }: { site: WebsiteRecord }) {
                   href="#contact"
                   className="rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-zinc-800"
                 >
-                  Get a quote
+                  Dapatkan sebutan harga
                 </a>
                 <a
                   href="#content"
                   className="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-zinc-900 ring-1 ring-inset ring-zinc-200 hover:bg-zinc-50"
                 >
-                  Learn more
+                  Ketahui lebih lanjut
                 </a>
               </div>
             </div>
@@ -122,13 +122,13 @@ export function SitePreview({ site }: { site: WebsiteRecord }) {
                 <div className="grid gap-6 lg:grid-cols-3">
                   <div className="lg:col-span-2">
                     <h2 className="text-xl font-bold text-zinc-900">
-                      What we do
+                      Apa yang kami lakukan
                     </h2>
                     <p className="mt-2 text-zinc-600">{about}</p>
                   </div>
                   <div className="rounded-2xl bg-zinc-50 p-5 ring-1 ring-inset ring-zinc-200">
                     <p className="text-sm font-semibold text-zinc-900">
-                      Quick info
+                      Maklumat ringkas
                     </p>
                     <div className="mt-3 space-y-2 text-sm text-zinc-700">
                       {site.phone ? <p>{site.phone}</p> : null}
@@ -141,14 +141,14 @@ export function SitePreview({ site }: { site: WebsiteRecord }) {
 
               {active === "about" ? (
                 <div>
-                  <h2 className="text-xl font-bold text-zinc-900">About us</h2>
+                  <h2 className="text-xl font-bold text-zinc-900">Tentang kami</h2>
                   <p className="mt-2 text-zinc-600">{about}</p>
                 </div>
               ) : null}
 
               {active === "services" ? (
                 <div>
-                  <h2 className="text-xl font-bold text-zinc-900">Services</h2>
+                  <h2 className="text-xl font-bold text-zinc-900">Perkhidmatan</h2>
                   <div className="mt-4 grid gap-3 sm:grid-cols-2">
                     {services.map((s, idx) => (
                       <div
@@ -157,7 +157,7 @@ export function SitePreview({ site }: { site: WebsiteRecord }) {
                       >
                         <p className="font-semibold text-zinc-900">{s}</p>
                         <p className="mt-1 text-sm text-zinc-600">
-                          Simple demo copy — tailor this per service.
+                          Penerangan demo ringkas — sesuaikan mengikut perkhidmatan.
                         </p>
                       </div>
                     ))}
@@ -168,17 +168,17 @@ export function SitePreview({ site }: { site: WebsiteRecord }) {
               {active === "hours" ? (
                 <div>
                   <h2 className="text-xl font-bold text-zinc-900">
-                    Operating hours
+                    Waktu operasi
                   </h2>
                   <pre className="mt-3 whitespace-pre-wrap rounded-2xl bg-zinc-50 p-4 text-sm text-zinc-700 ring-1 ring-inset ring-zinc-200">
-                    {site.operatingHours || "Add your hours in the builder form."}
+                    {site.operatingHours || "Tambahkan waktu operasi anda dalam borang pembina."}
                   </pre>
                 </div>
               ) : null}
 
               {active === "contact" ? (
                 <div id="contact">
-                  <h2 className="text-xl font-bold text-zinc-900">Contact</h2>
+                  <h2 className="text-xl font-bold text-zinc-900">Hubungi</h2>
                   {site.contact ? (
                     <p className="mt-2 text-zinc-600">{site.contact}</p>
                   ) : null}
@@ -201,7 +201,7 @@ export function SitePreview({ site }: { site: WebsiteRecord }) {
                     </div>
                   ) : (
                     <p className="mt-3 text-sm text-zinc-600">
-                      Add your contact details in the builder form.
+                      Tambahkan maklumat hubungan anda dalam borang pembina.
                     </p>
                   )}
                 </div>
@@ -211,7 +211,7 @@ export function SitePreview({ site }: { site: WebsiteRecord }) {
 
           {site.galleryUrls?.length ? (
             <div className="mt-10">
-              <h3 className="text-lg font-bold text-zinc-900">Gallery</h3>
+              <h3 className="text-lg font-bold text-zinc-900">Galeri</h3>
               <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
                 {site.galleryUrls.map((url) => (
                   <div
@@ -234,7 +234,7 @@ export function SitePreview({ site }: { site: WebsiteRecord }) {
             © {new Date().getFullYear()} {site.businessName}
           </p>
           <p className="text-zinc-500">
-            Demo site generated by the website builder MVP.
+            Laman web demo yang dijana oleh Pembina Laman Web.
           </p>
         </div>
       </footer>

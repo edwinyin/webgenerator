@@ -16,16 +16,16 @@ export default async function EditWebsitePage({
     return (
       <main className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
         <div className="rounded-3xl border border-zinc-200 bg-white p-8 text-center shadow-sm">
-          <p className="text-lg font-bold text-zinc-900">Site not found</p>
+          <p className="text-lg font-bold text-zinc-900">Laman web tidak dijumpai</p>
           <p className="mt-2 text-sm text-zinc-600">
-            This website may have been deleted.
+            Laman web ini mungkin telah dipadam.
           </p>
           <div className="mt-6">
             <Link
               href="/sites"
               className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-6 py-3 text-sm font-semibold text-white hover:bg-zinc-800"
             >
-              Back to sites
+              Kembali ke laman web
             </Link>
           </div>
         </div>

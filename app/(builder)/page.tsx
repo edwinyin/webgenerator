@@ -5,15 +5,15 @@ export default function Home() {
     <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
       <div className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm sm:p-12">
         <p className="text-sm font-semibold text-sky-700">
-          Demo: small business website builder
+          Demo: pembina laman web perniagaan kecil
         </p>
         <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-5xl">
-          Create a business website in minutes
+          Cipta laman web perniagaan dalam minit
         </h1>
         <p className="mt-4 max-w-2xl text-base leading-7 text-zinc-600 sm:text-lg">
-          This MVP stores everything locally (JSON + uploaded images). Each generated
-          website renders on a single route and uses front-end tabs to simulate a
-          multi-page site.
+          Platform ini menyimpan data dalam pangkalan data awan dan imej dalam storan awan.
+          Setiap laman web yang dijana dipaparkan pada satu laluan dan menggunakan tab
+          untuk mensimulasikan laman berbilang halaman.
         </p>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -21,31 +21,31 @@ export default function Home() {
             href="/admin/create"
             className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-6 py-3 text-sm font-semibold text-white hover:bg-zinc-800"
           >
-            Create a website
+            Cipta laman web
           </Link>
           <Link
             href="/sites"
             className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-zinc-900 ring-1 ring-inset ring-zinc-200 hover:bg-zinc-50"
           >
-            View created websites
+            Lihat laman web yang dicipta
           </Link>
         </div>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-3">
           <div className="rounded-2xl bg-zinc-50 p-5 ring-1 ring-inset ring-zinc-200">
-            <p className="text-sm font-semibold text-zinc-900">No auth</p>
-            <p className="mt-1 text-sm text-zinc-600">Purely a demo.</p>
+            <p className="text-sm font-semibold text-zinc-900">Tiada pengesahan</p>
+            <p className="mt-1 text-sm text-zinc-600">Sekadar demo.</p>
           </div>
           <div className="rounded-2xl bg-zinc-50 p-5 ring-1 ring-inset ring-zinc-200">
-            <p className="text-sm font-semibold text-zinc-900">No database</p>
+            <p className="text-sm font-semibold text-zinc-900">Pangkalan data awan</p>
             <p className="mt-1 text-sm text-zinc-600">
-              Stored in <span className="font-mono">data/sites.json</span>.
+              Disimpan dalam <span className="font-mono">Turso</span>.
             </p>
           </div>
           <div className="rounded-2xl bg-zinc-50 p-5 ring-1 ring-inset ring-zinc-200">
-            <p className="text-sm font-semibold text-zinc-900">Local uploads</p>
+            <p className="text-sm font-semibold text-zinc-900">Storan awan</p>
             <p className="mt-1 text-sm text-zinc-600">
-              Images saved to <span className="font-mono">public/uploads</span>.
+              Imej disimpan dalam <span className="font-mono">Supabase Storage</span>.
             </p>
           </div>
         </div>

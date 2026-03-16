@@ -51,13 +51,13 @@ export function WebsiteCard({ site }: { site: WebsiteRecord }) {
             {site.tagline ? (
               <p className="truncate text-sm text-zinc-600">{site.tagline}</p>
             ) : (
-              <p className="text-sm text-zinc-500">No tagline</p>
+              <p className="text-sm text-zinc-500">Tiada tagline</p>
             )}
           </div>
         </div>
 
         <p className="mt-4 text-sm leading-6 text-zinc-600">
-          {aboutShort || "No about text yet."}
+          {aboutShort || "Tiada maklumat tentang perniagaan lagi."}
           {aboutShort.length >= 140 ? "…" : ""}
         </p>
 
@@ -67,7 +67,7 @@ export function WebsiteCard({ site }: { site: WebsiteRecord }) {
             href={`/site/${site.slug}`}
             className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-4 py-2 text-sm font-semibold text-white hover:bg-zinc-800"
           >
-            Preview
+            Pratonton
           </Link>
         </div>
       </div>

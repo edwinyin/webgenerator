@@ -12,7 +12,7 @@ export function SitesGrid({ sites }: { sites: WebsiteRecord[] }) {
   const [error, setError] = useState<string | null>(null);
 
   async function onDelete(id: string) {
-    const ok = window.confirm("Delete this website? This cannot be undone.");
+    const ok = window.confirm("Padam laman web ini? Tindakan ini tidak boleh dibatalkan.");
     if (!ok) return;
 
     setError(null);
@@ -21,11 +21,11 @@ export function SitesGrid({ sites }: { sites: WebsiteRecord[] }) {
       const res = await fetch(`/api/sites/${id}`, { method: "DELETE" });
       const data = await res.json().catch(() => null);
       if (!res.ok || !data?.ok) {
-        throw new Error(data?.error || "Failed to delete");
+        throw new Error(data?.error || "Gagal memadam");
       }
       router.refresh();
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Failed to delete");
+      setError(e instanceof Error ? e.message : "Gagal memadam");
     } finally {
       setDeletingId(null);
     }
@@ -49,7 +49,7 @@ export function SitesGrid({ sites }: { sites: WebsiteRecord[] }) {
                 href={`/admin/edit/${s.id}`}
                 className="inline-flex flex-1 items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-zinc-900 ring-1 ring-inset ring-zinc-200 hover:bg-zinc-50"
               >
-                Edit
+                Edit laman web
               </Link>
               <button
                 type="button"
@@ -57,7 +57,7 @@ export function SitesGrid({ sites }: { sites: WebsiteRecord[] }) {
                 disabled={deletingId === s.id}
                 className="inline-flex flex-1 items-center justify-center rounded-full bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-500 disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {deletingId === s.id ? "Deleting…" : "Delete"}
+                {deletingId === s.id ? "Memadamkan…" : "Padam"}
               </button>
             </div>
           </div>

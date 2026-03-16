@@ -60,10 +60,10 @@ export function WebsiteForm(props: {
 
   function randomHours() {
     const patterns = [
-      "Mon–Fri: 8am–6pm\nSat: 9am–2pm\nSun: Closed",
-      "Mon–Thu: 9am–5pm\nFri: 9am–4pm\nSat: 10am–2pm\nSun: Closed",
-      "Mon–Sat: 10am–7pm\nSun: 11am–4pm",
-      "Mon–Fri: 7am–3pm\nSat–Sun: Closed",
+      "Isn\u2013Jum: 8pg\u20136ptg\nSab: 9pg\u20132ptg\nAhd: Tutup",
+      "Isn\u2013Kha: 9pg\u20135ptg\nJum: 9pg\u20134ptg\nSab: 10pg\u20132ptg\nAhd: Tutup",
+      "Isn\u2013Sab: 10pg\u20137ptg\nAhd: 11pg\u20134ptg",
+      "Isn\u2013Jum: 7pg\u20133ptg\nSab\u2013Ahd: Tutup",
     ];
     return pick(patterns);
   }
@@ -75,153 +75,150 @@ export function WebsiteForm(props: {
     const templates = [
       {
         businessName: () =>
-          `${pick(["Evergreen", "Sunrise", "Bluebird", "Maple", "Cedar", "Harbor", "Bright"])} ${pick(["Plumbing", "Dental", "Fitness", "Bakery", "Landscaping", "Auto Repair", "Cleaning", "Pet Grooming"])}${pick([" Co.", " Studio", " & Co.", ""])}`
+          `${pick(["Evergreen", "Sunrise", "Bluebird", "Maple", "Cedar", "Harbor", "Bright"])} ${pick(["Paip & Sanitari", "Pergigian", "Kecergasan", "Bakeri", "Landskap", "Servis Kereta", "Perkhidmatan Bersih", "Dandanan Haiwan"])}${pick([" Sdn.", " Studio", " & Rakan", ""])}`
             .replace(/\s+/g, " ")
             .trim(),
         tagline: () =>
           pick([
-            "Fast, friendly, local service.",
-            "Quality work at honest prices.",
-            "Modern care for busy families.",
-            "Made fresh every morning.",
-            "Your neighborhood experts.",
+            "Perkhidmatan pantas, mesra, dan tempatan.",
+            "Kerja berkualiti dengan harga yang jujur.",
+            "Penjagaan moden untuk keluarga yang sibuk.",
+            "Dibuat segar setiap pagi.",
+            "Pakar kejiranan anda.",
           ]),
         heroTitle: (name: string) =>
           pick([
-            `Welcome to ${name}`,
-            "Service you can trust",
-            "Small business. Big standards.",
-            "Comfort, quality, and care",
+            `Selamat datang ke ${name}`,
+            "Perkhidmatan yang boleh dipercayai",
+            "Perniagaan kecil. Standard tinggi.",
+            "Keselesaan, kualiti, dan penjagaan",
           ]),
         heroDescription: () =>
           pick([
-            "We make it easy to get the help you need—clear pricing, friendly staff, and great results.",
-            "Book in minutes and get a quick quote. We focus on quality, speed, and a great customer experience.",
-            "Professional service with a personal touch. Serving the community with pride.",
+            "Kami memudahkan anda mendapat bantuan yang diperlukan dengan harga jelas, kakitangan mesra, dan hasil yang cemerlang.",
+            "Tempah dalam minit dan dapatkan sebutan harga dengan cepat. Kami mengutamakan kualiti, kelajuan, dan pengalaman pelanggan yang hebat.",
+            "Perkhidmatan profesional dengan sentuhan peribadi. Berkhidmat kepada komuniti dengan penuh bangga.",
           ]),
         about: (name: string) =>
           pick([
-            `${name} is a locally owned team focused on reliable service and great communication. We show up on time, do the job right, and keep things simple from start to finish.`,
-            `We built ${name} to be the kind of business we’d want to use: friendly people, straightforward pricing, and consistent quality. Our goal is to earn your trust for the long haul.`,
+            `${name} ialah pasukan milik tempatan yang mengutamakan perkhidmatan boleh dipercayai dan komunikasi yang baik. Kami hadir tepat pada masa, melakukan kerja dengan betul, dan memastikan segalanya mudah dari mula hingga akhir.`,
+            `Kami membina ${name} untuk menjadi perniagaan yang kami sendiri mahu gunakan: orang yang mesra, harga yang jelas, dan kualiti yang konsisten. Matlamat kami adalah untuk mendapatkan kepercayaan anda dalam jangka masa panjang.`,
           ]),
         services: (category: string) => {
           const byCategory: Record<string, string[]> = {
-            Plumbing: [
-              "Leak detection & repair",
-              "Water heater install & repair",
-              "Drain cleaning",
-              "Fixture replacement",
+            "Paip & Sanitari": [
+              "Pengesanan & pembaikan kebocoran",
+              "Pemasangan & pembaikan pemanas air",
+              "Pembersihan parit",
+              "Penggantian lekapan",
             ],
-            Dental: [
-              "Cleanings & checkups",
-              "Whitening",
-              "Fillings & crowns",
-              "Emergency appointments",
+            Pergigian: [
+              "Pembersihan & pemeriksaan",
+              "Pemutihan gigi",
+              "Tampalan & mahkota",
+              "Temujanji kecemasan",
             ],
-            Fitness: [
-              "Personal training",
-              "Group classes",
-              "Strength programming",
-              "Nutrition coaching",
+            Kecergasan: [
+              "Latihan peribadi",
+              "Kelas berkumpulan",
+              "Program kekuatan",
+              "Bimbingan pemakanan",
             ],
-            Bakery: [
-              "Fresh bread daily",
-              "Custom cakes",
-              "Pastries & coffee",
-              "Catering boxes",
+            Bakeri: [
+              "Roti segar setiap hari",
+              "Kek tempahan",
+              "Pastri & kopi",
+              "Kotak katering",
             ],
-            Landscaping: [
-              "Lawn maintenance",
-              "Seasonal cleanups",
-              "Mulch & edging",
-              "Irrigation checks",
+            Landskap: [
+              "Penyelenggaraan halaman",
+              "Pembersihan musiman",
+              "Penutup bumi & tepi",
+              "Pemeriksaan pengairan",
             ],
-            "Auto Repair": [
-              "Oil changes",
-              "Brake service",
-              "Diagnostics",
-              "Tire rotation",
+            "Servis Kereta": [
+              "Tukar minyak",
+              "Servis brek",
+              "Diagnostik",
+              "Putaran tayar",
             ],
-            Cleaning: [
-              "Standard home cleaning",
-              "Deep cleans",
-              "Move-in / move-out",
-              "Office cleaning",
+            "Perkhidmatan Bersih": [
+              "Pembersihan rumah standard",
+              "Pembersihan mendalam",
+              "Masuk / keluar rumah",
+              "Pembersihan pejabat",
             ],
-            "Pet Grooming": [
-              "Bath & brush",
-              "Haircut & styling",
-              "Nail trim",
-              "De-shedding",
+            "Dandanan Haiwan": [
+              "Mandi & sikat",
+              "Gunting & gaya rambut",
+              "Potong kuku",
+              "Penyingkiran bulu",
             ],
           };
           const list = byCategory[category] || [
-            "Consultations",
-            "Packages",
-            "Maintenance",
-            "Emergency support",
+            "Konsultasi",
+            "Pakej",
+            "Penyelenggaraan",
+            "Sokongan kecemasan",
           ];
           return list.join("\n");
         },
         contact: () =>
           pick([
-            "Call or email us for a quick quote. Same-week appointments are often available.",
-            "Have a question? Reach out and we’ll respond within 1 business day.",
-            "Tell us what you need and we’ll recommend the best option for your budget and timeline.",
+            "Hubungi atau e-mel kami untuk sebutan harga yang cepat. Temujanji minggu yang sama selalunya tersedia.",
+            "Ada soalan? Hubungi kami dan kami akan bertindak balas dalam 1 hari bekerja.",
+            "Beritahu kami apa yang anda perlukan dan kami akan mencadangkan pilihan terbaik untuk bajet dan jadual anda.",
           ]),
         address: () =>
-          `${pick(["123", "245", "18", "77", "560"])} ${pick(["Main", "Oak", "Pine", "Market", "Cedar", "Sunset"])} St, ${pick(["San Diego", "Austin", "Seattle", "Denver", "Miami", "Portland"])}, ${pick(["CA", "TX", "WA", "CO", "FL", "OR"])}`,
+          `${pick(["123", "245", "18", "77", "560"])} Jalan ${pick(["Utama", "Oak", "Pines", "Pasar", "Senja"])}, ${pick(["Kuala Lumpur", "Petaling Jaya", "Georgetown", "Johor Bahru", "Shah Alam", "Ipoh"])}, ${pick(["Selangor", "W. Persekutuan", "Pulau Pinang", "Johor", "Perak"])}`,
       },
       {
         businessName: () =>
-          `${pick(["Northside", "Downtown", "Coastal", "Lakeside", "Uptown"])} ${pick(["Wellness", "Barbershop", "Yoga", "Cafe", "Studio", "Spa"])}${pick(["", " Collective", " House"])}`.trim(),
+          `${pick(["Northside", "Downtown", "Coastal", "Lakeside", "Uptown"])} ${pick(["Wellness", "Gunting Rambut", "Yoga", "Kafe", "Studio", "Spa"])}${pick(["", " Kolektif", " Haus"])}`.trim(),
         tagline: () =>
           pick([
-            "A better routine starts here.",
-            "Simple, calm, and consistent.",
-            "Walk in. Feel better. Repeat.",
-            "Good vibes, great service.",
+            "Rutin yang lebih baik bermula di sini.",
+            "Mudah, tenang, dan konsisten.",
+            "Masuk. Rasa lebih baik. Ulang.",
+            "Suasana baik, perkhidmatan hebat.",
           ]),
         heroTitle: (name: string) =>
           pick([
-            `Make time for ${name.split(" ")[0]}`,
-            "Your new favorite place",
-            "Feel-good service, done right",
+            `Luangkan masa untuk ${name.split(" ")[0]}`,
+            "Tempat kegemaran baharu anda",
+            "Perkhidmatan yang menyenangkan, dilakukan dengan betul",
           ]),
         heroDescription: () =>
           pick([
-            "Clean space, friendly staff, and flexible scheduling—built for real life.",
-            "Book a spot, show up, and let us handle the rest.",
+            "Ruang bersih, kakitangan mesra, dan jadual yang fleksibel dibina untuk kehidupan nyata.",
+            "Tempah tempat, hadir, dan biar kami uruskan selebihnya.",
           ]),
         about: (name: string) =>
           pick([
-            `${name} is designed to be welcoming, easy to book, and easy to love. We keep things simple and focus on doing the basics exceptionally well.`,
-            `We’re a local team that cares about the details—service, cleanliness, and consistency. That’s what brings people back to ${name}.`,
+            `${name} direka untuk menjadi tempat yang mesra, mudah ditempah, dan mudah disukai. Kami memastikan segalanya mudah dan menumpukan perhatian pada melakukan perkara asas dengan sangat baik.`,
+            `Kami adalah pasukan tempatan yang mengambil berat tentang perincian seperti perkhidmatan, kebersihan, dan konsistensi. Itulah yang membawa orang kembali ke ${name}.`,
           ]),
         services: () =>
           pick([
-            "Appointments\nMemberships\nPackages\nGift cards",
-            "Walk-ins\nAppointments\nPackages\nAdd-ons",
+            "Temujanji\nKeahlian\nPakej\nKad hadiah",
+            "Datang terus\nTemujanji\nPakej\nTambahan",
           ]),
         contact: () =>
           pick([
-            "Text us to book, or call during business hours. We’re happy to help.",
-            "Email us with any questions—quotes and scheduling are quick and easy.",
+            "Mesej kami untuk menempah, atau hubungi semasa waktu perniagaan. Kami gembira membantu.",
+            "E-mel kami dengan sebarang soalan. Sebutan harga dan penjadualan adalah cepat dan mudah.",
           ]),
         address: () =>
-          `${pick(["44", "90", "310", "12"])} ${pick(["Broadway", "1st Ave", "2nd Ave", "Center"])} , ${pick(["Los Angeles", "Phoenix", "Nashville", "Chicago"])}, ${pick(["CA", "AZ", "TN", "IL"])}`.replace(
-            /\s+/g,
-            " ",
-          ),
+          `${pick(["44", "90", "310", "12"])} ${pick(["Jalan Bukit", "Jalan 1", "Jalan 2", "Jalan Tengah"])}, ${pick(["Subang Jaya", "Melaka", "Kota Kinabalu", "Kuching"])}, ${pick(["Selangor", "Melaka", "Sabah", "Sarawak"])}`,
       },
     ];
 
     const t = pick(templates);
     const businessName = t.businessName();
     const categoryMatch = businessName.match(
-      /(Plumbing|Dental|Fitness|Bakery|Landscaping|Auto Repair|Cleaning|Pet Grooming)/,
+      /(Paip & Sanitari|Pergigian|Kecergasan|Bakeri|Landskap|Servis Kereta|Perkhidmatan Bersih|Dandanan Haiwan)/,
     );
-    const category = categoryMatch?.[1] || "Service";
+    const category = categoryMatch?.[1] || "Lain-lain";
 
     const emailDomain = businessName
       .toLowerCase()
@@ -239,7 +236,7 @@ export function WebsiteForm(props: {
       operatingHours: randomHours(),
       address: t.address(),
       phone: randomPhone(),
-      email: `hello@${emailDomain || "business"}.test`,
+      email: `hello@${emailDomain || "perniagaan"}.test`,
     });
   }
 
@@ -255,7 +252,7 @@ export function WebsiteForm(props: {
 
     try {
       if (mode === "edit" && !props.siteId) {
-        throw new Error("Missing site id");
+        throw new Error("ID laman web tiada");
       }
 
       const fd = new FormData();
@@ -269,14 +266,14 @@ export function WebsiteForm(props: {
       const res = await fetch(url, { method, body: fd });
       const data = await res.json();
       if (!res.ok || !data?.ok) {
-        throw new Error(data?.error || "Failed to create site");
+        throw new Error(data?.error || "Gagal mencipta laman web");
       }
 
-      setSuccess(mode === "edit" ? "Website updated. Redirecting…" : "Website created. Redirecting…");
+      setSuccess(mode === "edit" ? "Laman web telah dikemaskini. Mengalihkan\u2026" : "Laman web telah dicipta. Mengalihkan\u2026");
       router.push("/sites");
       router.refresh();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong");
+      setError(err instanceof Error ? err.message : "Sesuatu telah berlaku");
     } finally {
       setSubmitting(false);
     }
@@ -320,12 +317,12 @@ export function WebsiteForm(props: {
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900">
-              {mode === "edit" ? "Edit website" : "Create a website"}
+              {mode === "edit" ? "Edit laman web" : "Cipta laman web"}
             </h1>
             <p className="mt-1 text-sm text-zinc-600">
               {mode === "edit"
-                ? "Update the business details and regenerate the demo preview."
-                : "Fill in the business details, upload a couple images, and generate a demo website."}
+                ? "Kemaskini maklumat perniagaan dan jana semula pratonton demo."
+                : "Isi maklumat perniagaan, muat naik beberapa imej, dan jana laman web demo."}
             </p>
           </div>
           <div className="mt-3 flex flex-col gap-2 sm:mt-0 sm:flex-row sm:items-center">
@@ -335,7 +332,7 @@ export function WebsiteForm(props: {
                 onClick={fillRandom}
                 className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-zinc-900 ring-1 ring-inset ring-zinc-200 hover:bg-zinc-50"
               >
-                Fill random demo data
+                Isi data demo rawak
               </button>
             ) : null}
             <button
@@ -343,7 +340,7 @@ export function WebsiteForm(props: {
               disabled={!canSubmit}
               className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {submitting ? (mode === "edit" ? "Saving…" : "Creating…") : mode === "edit" ? "Save changes" : "Create website"}
+              {submitting ? (mode === "edit" ? "Menyimpan\u2026" : "Mencipta\u2026") : mode === "edit" ? "Simpan perubahan" : "Cipta laman web"}
             </button>
           </div>
         </div>
@@ -360,56 +357,56 @@ export function WebsiteForm(props: {
         ) : null}
 
         <div className="mt-8 grid gap-5 sm:grid-cols-2">
-          {field("businessName", { label: "Business name", placeholder: "Acme Plumbing" })}
-          {field("tagline", { label: "Tagline", placeholder: "Fast, friendly, local service" })}
-          {field("heroTitle", { label: "Hero title", placeholder: "A headline customers remember" })}
+          {field("businessName", { label: "Nama perniagaan", placeholder: "Syarikat Acme" })}
+          {field("tagline", { label: "Tagline", placeholder: "Perkhidmatan pantas, mesra, tempatan" })}
+          {field("heroTitle", { label: "Tajuk utama", placeholder: "Tajuk yang diingati pelanggan" })}
           {field("heroDescription", {
-            label: "Hero description",
-            placeholder: "A short sentence explaining what you do best.",
+            label: "Penerangan utama",
+            placeholder: "Ayat ringkas menerangkan apa yang anda lakukan dengan terbaik.",
           })}
         </div>
 
         <div className="mt-5 grid gap-5 sm:grid-cols-2">
           {field("about", {
-            label: "About",
+            label: "Tentang",
             textarea: true,
             rows: 6,
-            placeholder: "A short paragraph about your business.",
+            placeholder: "Perenggan ringkas tentang perniagaan anda.",
           })}
           {field("services", {
-            label: "Services (one per line)",
+            label: "Perkhidmatan (satu baris setiap satu)",
             textarea: true,
             rows: 6,
-            placeholder: "Service 1\nService 2\nService 3",
+            placeholder: "Perkhidmatan 1\nPerkhidmatan 2\nPerkhidmatan 3",
           })}
         </div>
 
         <div className="mt-5 grid gap-5 sm:grid-cols-2">
           {field("contact", {
-            label: "Contact blurb",
+            label: "Maklumat hubungan",
             textarea: true,
             rows: 4,
-            placeholder: "How should customers reach you?",
+            placeholder: "Bagaimana pelanggan boleh menghubungi anda?",
           })}
           {field("operatingHours", {
-            label: "Operating hours",
+            label: "Waktu operasi",
             textarea: true,
             rows: 4,
-            placeholder: "Mon–Fri: 9am–5pm\nSat: 10am–2pm\nSun: Closed",
+            placeholder: "Isn\u2013Jum: 9pg\u20135ptg\nSab: 10pg\u20132ptg\nAhd: Tutup",
           })}
         </div>
 
         <div className="mt-5 grid gap-5 sm:grid-cols-2">
-          {field("address", { label: "Address", placeholder: "123 Main St, City, State" })}
-          {field("phone", { label: "Phone", placeholder: "(555) 123-4567" })}
-          {field("email", { label: "Email", placeholder: "hello@business.com" })}
+          {field("address", { label: "Alamat", placeholder: "123 Jalan Utama, Bandar, Negeri" })}
+          {field("phone", { label: "Telefon", placeholder: "(555) 123-4567" })}
+          {field("email", { label: "E-mel", placeholder: "hello@perniagaan.com" })}
         </div>
       </div>
 
       <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm sm:p-8">
-        <h2 className="text-lg font-bold text-zinc-900">Images</h2>
+        <h2 className="text-lg font-bold text-zinc-900">Imej</h2>
         <p className="mt-1 text-sm text-zinc-600">
-          Uploads are stored locally in <span className="font-mono">public/uploads</span>.
+          Imej disimpan dalam <span className="font-mono">Supabase Storage</span>.
         </p>
 
         <div className="mt-6 grid gap-6 sm:grid-cols-2">
@@ -418,29 +415,28 @@ export function WebsiteForm(props: {
             name="logo"
             files={logo}
             onChange={(f) => setLogo(f as File | null)}
-            hint="Square works best"
+            hint="Imej segi empat adalah terbaik"
           />
           <ImageUploadField
             label="Banner"
             name="banner"
             files={banner}
             onChange={(f) => setBanner(f as File | null)}
-            hint="Wide image recommended"
+            hint="Imej lebar disyorkan"
           />
         </div>
 
         <div className="mt-6">
           <ImageUploadField
-            label="Gallery (optional)"
+            label="Galeri (pilihan)"
             name="gallery"
             multiple
             files={gallery}
             onChange={(f) => setGallery(f as File[] | null)}
-            hint="You can select multiple files"
+            hint="Anda boleh pilih beberapa fail"
           />
         </div>
       </div>
     </form>
   );
 }
-
