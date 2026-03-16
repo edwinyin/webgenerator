@@ -1,1 +1,58 @@
-[]
+[
+  {
+    "id": "82d53fd0-a1a9-4cfb-ba05-c03d8117cb2d",
+    "slug": "santhi-auto-repair",
+    "businessName": "Santhi Auto Repair",
+    "tagline": "Your neighborhood experts.",
+    "heroTitle": "Small business. Big standards.",
+    "heroDescription": "We make it easy to get the help you need—clear pricing, friendly staff, and great results.",
+    "about": "Maple Auto Repair is a locally owned team focused on reliable service and great communication. We show up on time, do the job right, and keep things simple from start to finish.",
+    "services": [
+      "Oil changes",
+      "Brake service",
+      "Diagnostics",
+      "Tire rotation"
+    ],
+    "contact": "Have a question? Reach out and we’ll respond within 1 business day.",
+    "operatingHours": "Mon–Fri: 8am–6pm\r\nSat: 9am–2pm\r\nSun: Closed",
+    "address": "18 Pine St, Austin, FL",
+    "phone": "(344) 614-3368",
+    "email": "hello@mapleautorepair.test",
+    "logoUrl": "/uploads/santhi-auto-repair-logo-1773635617977-707d2f4d92e308.webp",
+    "bannerUrl": "/uploads/santhi-auto-repair-banner-1773635617981-473460bd487fc8.webp",
+    "galleryUrls": [
+      "/uploads/santhi-auto-repair-gallery-1773635617984-98c1075f10a63.webp",
+      "/uploads/santhi-auto-repair-gallery-1773635617994-17194b91d88758.webp",
+      "/uploads/santhi-auto-repair-gallery-1773635617998-1ef0fb2251e008.webp"
+    ],
+    "createdAt": "2026-03-16T04:33:38.001Z"
+  },
+  {
+    "id": "01d1e04f-84da-43aa-bd2f-5b457ca9ff1d",
+    "slug": "sunrise-landscaping-co",
+    "businessName": "Sunrise Landscaping Co.",
+    "tagline": "Modern care for busy families.",
+    "heroTitle": "Comfort, quality, and care",
+    "heroDescription": "Professional service with a personal touch. Serving the community with pride.",
+    "about": "Sunrise Landscaping Co. is a locally owned team focused on reliable service and great communication. We show up on time, do the job right, and keep things simple from start to finish.",
+    "services": [
+      "Lawn maintenance",
+      "Seasonal cleanups",
+      "Mulch & edging",
+      "Irrigation checks"
+    ],
+    "contact": "Have a question? Reach out and we’ll respond within 1 business day.",
+    "operatingHours": "Mon–Thu: 9am–5pm\r\nFri: 9am–4pm\r\nSat: 10am–2pm\r\nSun: Closed",
+    "address": "77 Oak St, Denver, WA",
+    "phone": "(606) 236-2007",
+    "email": "hello@sunriselandscapingco.test",
+    "logoUrl": "/uploads/sunrise-landscaping-co-logo-1773301741470-2a9e27e0b9e79.webp",
+    "bannerUrl": "/uploads/sunrise-landscaping-co-banner-1773301741472-e2aac1798f4948.webp",
+    "galleryUrls": [
+      "/uploads/sunrise-landscaping-co-gallery-1773301741474-4ea5230d234368.webp",
+      "/uploads/sunrise-landscaping-co-gallery-1773301741475-3e5a4d24abf288.webp",
+      "/uploads/sunrise-landscaping-co-gallery-1773301741477-c18bd162e90e7.webp"
+    ],
+    "createdAt": "2026-03-12T07:49:01.479Z"
+  }
+]

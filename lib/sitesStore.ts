@@ -1,117 +1,165 @@
-import { promises as fs } from "fs";
-import path from "path";
 import { WebsiteRecord } from "@/lib/types";
-
-const DATA_DIR = path.join(process.cwd(), "data");
-const SITES_PATH = path.join(DATA_DIR, "sites.json");
-
-const SEED_SITES: WebsiteRecord[] = [
-  {
-    id: "seed-1",
-    slug: "sparkle-auto-detailing",
-    businessName: "Sparkle Auto Detailing",
-    tagline: "Showroom shine, every time.",
-    heroTitle: "Premium detailing for busy people",
-    heroDescription:
-      "Mobile and in-shop detailing packages designed to make your car look incredible—without the hassle.",
-    about:
-      "We’re a small, local team obsessed with the little things: clean lines, spotless interiors, and a finish that lasts. We use pro-grade products and a repeatable process so you know what you’ll get every time.",
-    services: [
-      "Exterior wash + wax",
-      "Interior deep clean",
-      "Ceramic coating",
-      "Headlight restoration",
-    ],
-    contact:
-      "Call or text us for a quick quote. Same-week appointments available for most packages.",
-    operatingHours: "Mon–Sat: 9am–6pm\nSun: Closed",
-    address: "123 Main St, San Diego, CA",
-    phone: "(555) 123-4567",
-    email: "hello@sparkleautodetailing.test",
-    logoUrl: "/uploads/seed-logo.svg",
-    bannerUrl: "/uploads/seed-banner.svg",
-    galleryUrls: [],
-    createdAt: new Date().toISOString(),
-  },
-];
-
-async function ensureStore() {
-  await fs.mkdir(DATA_DIR, { recursive: true });
-
-  try {
-    await fs.access(SITES_PATH);
-  } catch {
-    await fs.writeFile(SITES_PATH, JSON.stringify(SEED_SITES, null, 2), "utf8");
-  }
-}
-
-export async function readAllSites(): Promise<WebsiteRecord[]> {
-  await ensureStore();
-  const raw = await fs.readFile(SITES_PATH, "utf8");
-  const parsed = JSON.parse(raw || "[]");
-  return Array.isArray(parsed) ? (parsed as WebsiteRecord[]) : [];
-}
-
-export async function writeAllSites(sites: WebsiteRecord[]) {
-  await ensureStore();
-  await fs.writeFile(SITES_PATH, JSON.stringify(sites, null, 2), "utf8");
-}
+import { db } from "@/lib/db";
 
 export async function getSiteBySlug(slug: string) {
-  const sites = await readAllSites();
-  return sites.find((s) => s.slug === slug) ?? null;
+  const row = await db.execute({
+    sql: "SELECT * FROM sites WHERE slug = ? LIMIT 1",
+    args: [slug],
+  });
+  if (row.rows.length === 0) return null;
+  return mapRowToWebsite(row.rows[0]);
 }
 
 export async function getSiteById(id: string) {
-  const sites = await readAllSites();
-  return sites.find((s) => s.id === id) ?? null;
+  const row = await db.execute({
+    sql: "SELECT * FROM sites WHERE id = ? LIMIT 1",
+    args: [id],
+  });
+  if (row.rows.length === 0) return null;
+  return mapRowToWebsite(row.rows[0]);
 }
 
 export async function getAllSites() {
-  return await readAllSites();
+  const result = await db.execute("SELECT * FROM sites ORDER BY createdAt DESC");
+  return result.rows.map(mapRowToWebsite);
 }
 
 export async function addSite(site: WebsiteRecord) {
-  const sites = await readAllSites();
-  sites.unshift(site);
-  await writeAllSites(sites);
+  await db.execute({
+    sql: `
+      INSERT INTO sites (
+        id, slug, businessName, tagline, heroTitle, heroDescription,
+        about, services, contact, operatingHours, address, phone, email,
+        logoUrl, bannerUrl, galleryUrls, createdAt
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `,
+    args: [
+      site.id,
+      site.slug,
+      site.businessName,
+      site.tagline,
+      site.heroTitle,
+      site.heroDescription,
+      site.about,
+      JSON.stringify(site.services),
+      site.contact,
+      site.operatingHours,
+      site.address,
+      site.phone,
+      site.email,
+      site.logoUrl,
+      site.bannerUrl,
+      JSON.stringify(site.galleryUrls),
+      site.createdAt,
+    ],
+  });
   return site;
 }
 
 export async function getUniqueSlug(baseSlug: string) {
-  const sites = await readAllSites();
-  const existing = new Set(sites.map((s) => s.slug));
-  if (!existing.has(baseSlug)) return baseSlug;
-
+  let candidate = baseSlug;
   let i = 2;
-  while (existing.has(`${baseSlug}-${i}`)) i += 1;
-  return `${baseSlug}-${i}`;
+  // simple loop; number of sites is small
+  // eslint-disable-next-line no-constant-condition
+  while (true) {
+    const { rows } = await db.execute({
+      sql: "SELECT 1 FROM sites WHERE slug = ? LIMIT 1",
+      args: [candidate],
+    });
+    if (rows.length === 0) return candidate;
+    candidate = `${baseSlug}-${i}`;
+    i += 1;
+  }
 }
 
 export async function getUniqueSlugForUpdate(baseSlug: string, ignoreId: string) {
-  const sites = await readAllSites();
-  const existing = new Set(sites.filter((s) => s.id !== ignoreId).map((s) => s.slug));
-  if (!existing.has(baseSlug)) return baseSlug;
-
+  let candidate = baseSlug;
   let i = 2;
-  while (existing.has(`${baseSlug}-${i}`)) i += 1;
-  return `${baseSlug}-${i}`;
+  // eslint-disable-next-line no-constant-condition
+  while (true) {
+    const { rows } = await db.execute({
+      sql: "SELECT 1 FROM sites WHERE slug = ? AND id != ? LIMIT 1",
+      args: [candidate, ignoreId],
+    });
+    if (rows.length === 0) return candidate;
+    candidate = `${baseSlug}-${i}`;
+    i += 1;
+  }
 }
 
 export async function updateSiteById(id: string, next: WebsiteRecord) {
-  const sites = await readAllSites();
-  const idx = sites.findIndex((s) => s.id === id);
-  if (idx === -1) return null;
-  sites[idx] = next;
-  await writeAllSites(sites);
+  const { rowsAffected } = await db.execute({
+    sql: `
+      UPDATE sites
+      SET
+        slug = ?,
+        businessName = ?,
+        tagline = ?,
+        heroTitle = ?,
+        heroDescription = ?,
+        about = ?,
+        services = ?,
+        contact = ?,
+        operatingHours = ?,
+        address = ?,
+        phone = ?,
+        email = ?,
+        logoUrl = ?,
+        bannerUrl = ?,
+        galleryUrls = ?
+      WHERE id = ?
+    `,
+    args: [
+      next.slug,
+      next.businessName,
+      next.tagline,
+      next.heroTitle,
+      next.heroDescription,
+      next.about,
+      JSON.stringify(next.services),
+      next.contact,
+      next.operatingHours,
+      next.address,
+      next.phone,
+      next.email,
+      next.logoUrl,
+      next.bannerUrl,
+      JSON.stringify(next.galleryUrls),
+      id,
+    ],
+  });
+  if (!rowsAffected) return null;
   return next;
 }
 
 export async function deleteSiteById(id: string) {
-  const sites = await readAllSites();
-  const next = sites.filter((s) => s.id !== id);
-  if (next.length === sites.length) return false;
-  await writeAllSites(next);
-  return true;
+  const { rowsAffected } = await db.execute({
+    sql: "DELETE FROM sites WHERE id = ?",
+    args: [id],
+  });
+  return rowsAffected > 0;
 }
+
+function mapRowToWebsite(row: any): WebsiteRecord {
+  return {
+    id: String(row.id),
+    slug: String(row.slug),
+    businessName: String(row.businessName),
+    tagline: String(row.tagline),
+    heroTitle: String(row.heroTitle),
+    heroDescription: String(row.heroDescription),
+    about: String(row.about),
+    services: JSON.parse(String(row.services || "[]")),
+    contact: String(row.contact),
+    operatingHours: String(row.operatingHours),
+    address: String(row.address),
+    phone: String(row.phone),
+    email: String(row.email),
+    logoUrl: String(row.logoUrl),
+    bannerUrl: String(row.bannerUrl),
+    galleryUrls: JSON.parse(String(row.galleryUrls || "[]")),
+    createdAt: String(row.createdAt),
+  };
+}
+
 
