@@ -1,5 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import path from "path";
+import sharp from "sharp";
 
 function safeExt(filename: string) {
   const ext = path.extname(filename || "").toLowerCase();
@@ -29,17 +30,39 @@ export async function saveUploadedFile(opts: {
   kind: string;
 }) {
   const supabase = getSupabase();
-  const ext = safeExt(opts.file.name) || ".bin";
+  const originalExt = safeExt(opts.file.name) || ".bin";
+
+  const targetExt = ".webp";
 
   const filename = `${opts.slug}-${opts.kind}-${Date.now()}-${Math.random()
     .toString(16)
-    .slice(2)}${ext}`;
+    .slice(2)}${targetExt}`;
   const filepath = `${opts.slug}/${filename}`;
 
-  const buf = Buffer.from(await opts.file.arrayBuffer());
+  const inputBuffer = Buffer.from(await opts.file.arrayBuffer());
+
+  let buf = inputBuffer;
+  let contentType = "image/webp";
+
+  try {
+    const image = sharp(inputBuffer);
+
+    const metadata = await image.metadata();
+    const width = metadata.width || 0;
+
+    const pipeline = image.resize({
+      width: width > 1600 ? 1600 : width || 1600,
+      withoutEnlargement: true,
+    });
+
+    buf = await pipeline.webp({ quality: 80 }).toBuffer();
+  } catch {
+    buf = inputBuffer;
+    contentType = opts.file.type || "application/octet-stream";
+  }
 
   const { error } = await supabase.storage.from(BUCKET).upload(filepath, buf, {
-    contentType: opts.file.type || "application/octet-stream",
+    contentType,
     upsert: false,
   });
 
