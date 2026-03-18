@@ -346,26 +346,9 @@ export function WebsiteForm(props: {
                 Isi data demo rawak
               </button>
             ) : null}
-            <button
-              type="submit"
-              disabled={!canSubmit}
-              className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-60"
-            >
-              {submitting ? (mode === "edit" ? "Menyimpan\u2026" : "Mencipta\u2026") : mode === "edit" ? "Simpan perubahan" : "Cipta laman web"}
-            </button>
           </div>
         </div>
 
-        {error ? (
-          <div className="mt-4 rounded-2xl border border-red-200 bg-red-50 p-3 text-sm text-red-700">
-            {error}
-          </div>
-        ) : null}
-        {success ? (
-          <div className="mt-4 rounded-2xl border border-emerald-200 bg-emerald-50 p-3 text-sm text-emerald-800">
-            {success}
-          </div>
-        ) : null}
 
         <div className="mt-8 grid gap-5 sm:grid-cols-2">
           {field("businessName", { label: "Nama perniagaan", placeholder: "Syarikat Acme" })}
@@ -446,6 +429,38 @@ export function WebsiteForm(props: {
             onChange={(f) => setGallery(f as File[] | null)}
             hint="Anda boleh pilih beberapa fail"
           />
+        </div>
+      </div>
+
+      <div className="h-24 sm:hidden" />
+
+      <div className="fixed inset-x-0 bottom-0 z-20 border-t border-zinc-200 bg-white/95 px-4 py-3 backdrop-blur sm:static sm:mt-8 sm:rounded-3xl sm:border sm:bg-white sm:px-6 sm:py-4">
+        <div className="mx-auto flex max-w-3xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="space-y-2 text-sm">
+            {error ? (
+              <div className="rounded-2xl border border-red-200 bg-red-50 px-3 py-2 text-red-700">
+                {error}
+              </div>
+            ) : null}
+            {success ? (
+              <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-emerald-800">
+                {success}
+              </div>
+            ) : null}
+          </div>
+          <button
+            type="submit"
+            disabled={!canSubmit}
+            className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {submitting
+              ? mode === "edit"
+                ? "Menyimpan…"
+                : "Mencipta…"
+              : mode === "edit"
+                ? "Simpan perubahan"
+                : "Cipta laman web"}
+          </button>
         </div>
       </div>
     </form>
