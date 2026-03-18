@@ -275,9 +275,31 @@ export function WebsiteForm(props: {
       const url = mode === "edit" ? `/api/sites/${props.siteId}` : "/api/sites";
       const method = mode === "edit" ? "PUT" : "POST";
       const res = await fetch(url, { method, body: fd });
-      const data = await res.json();
+
+      let data: any = null;
+      let textBody = "";
+      try {
+        const contentType = res.headers.get("content-type") || "";
+        if (contentType.includes("application/json")) {
+          data = await res.json();
+        } else {
+          textBody = await res.text();
+        }
+      } catch {
+        // ignore parse errors, handled below
+      }
+
       if (!res.ok || !data?.ok) {
-        throw new Error(data?.error || "Gagal mencipta laman web");
+        if (res.status === 413) {
+          throw new Error(
+            "Fail terlalu besar untuk dimuat naik. Sila gunakan imej yang lebih kecil atau dimampatkan.",
+          );
+        }
+        throw new Error(
+          (data && data.error) ||
+            textBody ||
+            "Gagal mencipta laman web",
+        );
       }
 
       setSuccess(mode === "edit" ? "Laman web telah dikemaskini. Mengalihkan\u2026" : "Laman web telah dicipta. Mengalihkan\u2026");
