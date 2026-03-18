@@ -41,7 +41,7 @@ export async function saveUploadedFile(opts: {
 
   const inputBuffer = Buffer.from(await opts.file.arrayBuffer());
 
-  let buf = inputBuffer;
+  let buf: Buffer = inputBuffer;
   let contentType = "image/webp";
 
   try {
@@ -54,8 +54,7 @@ export async function saveUploadedFile(opts: {
       width: width > 1600 ? 1600 : width || 1600,
       withoutEnlargement: true,
     });
-
-    buf = await pipeline.webp({ quality: 80 }).toBuffer();
+    buf = (await pipeline.webp({ quality: 80 }).toBuffer()) as Buffer;
   } catch {
     buf = inputBuffer;
     contentType = opts.file.type || "application/octet-stream";
