@@ -56,7 +56,7 @@ export function ImageUploadField({
 
       {previews.length ? (
         <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
-          {previews.map((p) => (
+          {previews.map((p, idx) => (
             <div
               key={`${p.file.name}-${p.file.size}-${p.file.lastModified}`}
               className="relative overflow-hidden rounded-xl border border-zinc-200 bg-white"
@@ -67,6 +67,32 @@ export function ImageUploadField({
                 alt={p.file.name}
                 className="h-20 w-full object-cover"
               />
+              <button
+                type="button"
+                className="absolute inset-x-1 bottom-1 rounded-full bg-white/90 px-2 py-0.5 text-xs font-medium text-zinc-700 shadow hover:bg-white"
+                onClick={() => {
+                  if (multiple) {
+                    const current = Array.isArray(files)
+                      ? files
+                      : files
+                      ? [files]
+                      : [];
+                    const next = current.filter(
+                      (f) =>
+                        !(
+                          f.name === p.file.name &&
+                          f.size === p.file.size &&
+                          f.lastModified === p.file.lastModified
+                        ),
+                    );
+                    onChange(next.length ? next : null);
+                  } else {
+                    onChange(null);
+                  }
+                }}
+              >
+                Buang
+              </button>
             </div>
           ))}
         </div>

@@ -442,16 +442,6 @@ export function WebsiteForm(props: {
           />
         </div>
 
-        <div className="mt-6">
-          <ImageUploadField
-            label="Galeri (pilihan)"
-            name="gallery"
-            multiple
-            files={gallery}
-            onChange={(f) => setGallery(f as File[] | null)}
-            hint="Anda boleh pilih beberapa fail"
-          />
-        </div>
       </div>
 
       <div className="h-24 sm:hidden" />
